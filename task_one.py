@@ -20,7 +20,7 @@ def get_days_from_today(date: str) -> int:
     except ValueError:
         return "Error: Invalid date. Please check the day or month"
     
-    # При застосуванні выднімання дат утворюється об'єкт timedelta до якого можна звернутися за кількістю днів через атрибут days
+    # При застосуванні віднімання дат утворюється об'єкт timedelta до якого можна звернутися за кількістю днів через атрибут days
     temporary_difference = (current_date - date).days
     
     return temporary_difference
@@ -40,7 +40,7 @@ def get_days_from_today(date: str) -> int:
     except ValueError:
         return "Error: Invalid date. Please check the day or month"
     
-    # При застосуванні выднімання дат утворюється об'єкт timedelta до якого можна звернутися за кількістю днів через атрибут days
+    # При застосуванні віднімання дат утворюється об'єкт timedelta до якого можна звернутися за кількістю днів через атрибут days
     temporary_difference = (current_date - date).days
 
     return temporary_difference
