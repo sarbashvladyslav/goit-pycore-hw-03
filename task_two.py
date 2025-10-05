@@ -24,12 +24,16 @@ def random_number(min: int, max: int) -> int:
 
 def get_numbers_ticket(min: int, max: int, quantity: int) -> list[int]:
     if min < 1:
+        # return []
         return "Error: Min value should not be less than 1"
     if min > max:
+        # return []
         return "Error: Min value should be less than Max value"
     if max > 1000:
+        # return []
         return "Error: Max value should not be greater than 1000"
     if quantity > (max - min + 1):
+        # return []
         return "Error: Quantity of numbers should not be greater than the range of numbers"
     # №1 варіант    
     #winning_numbers = set()
