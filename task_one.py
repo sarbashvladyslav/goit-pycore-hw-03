@@ -1,9 +1,10 @@
 from datetime import datetime
 import re
 
+"""    # 1 Варіант
 def get_days_from_today(date: str) -> int:
     current_date = datetime.today().date()
-    # будь-яке відьемне число перетвориться в позитивне, так як "-" спецсимвол (можно покращити)
+    # будь-яке від'ємне число перетвориться в позитивне, так як "-" це спецсимвол (можно покращити)
     pattern = r"\d+"
     split_time = re.findall(pattern, date)
 
@@ -14,17 +15,34 @@ def get_days_from_today(date: str) -> int:
     for i in range(0, 3):
         split_time[i] = int(split_time[i])
 
-    if split_time[1] < 1 or split_time[1] > 12:
-        return "Error: Month must be between 1 and 12."
-    if split_time[2] < 1 or split_time[2] > 31:
-        return "Error: Day must be between 1 and 31."
-
-    # Отримуемо дату у потрібному форматі YYYY-MM-DD об'єкта datetime
-    date = datetime(year=split_time[0], month=split_time[1], day=split_time[2]).date()
-
+    try:
+        date = datetime(year=split_time[0], month=split_time[1], day=split_time[2]).date()
+    except ValueError:
+        return "Error: Invalid date. Please check the day or month"
+    
     # При застосуванні выднімання дат утворюється об'єкт timedelta до якого можна звернутися за кількістю днів через атрибут days
     temporary_difference = (current_date - date).days
     
+    return temporary_difference
+"""
+
+    # 2 Варіант
+def get_days_from_today(date: str) -> int:
+    current_date = datetime.today().date()
+
+    try:
+        time = datetime.strptime(date, "%Y-%m-%d").date()
+    except ValueError:
+        return "Error: Incorrect date format. Please use YYYY-MM-DD."
+
+    try:
+        date = datetime(year=time.year, month=time.month, day=time.day).date()
+    except ValueError:
+        return "Error: Invalid date. Please check the day or month"
+    
+    # При застосуванні выднімання дат утворюється об'єкт timedelta до якого можна звернутися за кількістю днів через атрибут days
+    temporary_difference = (current_date - date).days
+
     return temporary_difference
 
 enter_date = input("Enter date in format YYYY-MM-DD: ")
