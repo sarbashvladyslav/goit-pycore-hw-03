@@ -1,11 +1,26 @@
 import random
+    
+#Варіант 1    
+
+def get_numbers_ticket(min, max, quantity):
+    if min < 1 or max > 1000 or min > max or quantity > (max - min + 1):
+        return []
+
+    winning_numbers = sorted(random.sample(range(min, max + 1), quantity))
+
+    return winning_numbers
+
+lottery_numbers = get_numbers_ticket(1, 49, 6)
+print("Ваші лотерейні числа:", lottery_numbers)
+
+    # Варіант 2
     # Одна з умов:
     #Функція повертає список випадково вибраних, відсортованих чисел.
     #Числа в наборі не повинні повторюватися.
     #Якщо параметри не відповідають заданим обмеженням, функція повертає пустий список.
     # - ця умова буде виконуватися, якщо замість помилок повертати пустий список. Але краще повертати повідомлення про помилку як на мене.
 
-def from_string_to_numbers(string: str) -> list[int]:
+"""def from_string_to_numbers(string: str) -> list[int]:
     string = string.split()
     
     if len(string) != 3:
@@ -49,6 +64,7 @@ def lottery(date):
     try:
         min, max, quantity = from_string_to_numbers(date)
     except ValueError:
+        # повертає помилку, якщо не вдасться розпакувати значення
         return from_string_to_numbers(date)
     
     winning_numbers = get_numbers_ticket(min, max, quantity)
@@ -57,4 +73,4 @@ def lottery(date):
 
 enter_numbers = input("Enter min, max and quantity of numbers separated by space. Example: 1 100 5: ")
 
-print(lottery(enter_numbers))
+print(lottery(enter_numbers))"""
