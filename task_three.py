@@ -10,6 +10,9 @@ raw_numbers = [
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   ",
+    "8(050)1112233",
+    "0 500 111 22 33",
+    "8 050 111 22 44",
 ]
 
 corrected_numbers = []
@@ -21,8 +24,11 @@ def normalize_phone(phone_number: str) -> str:
 
     for i in updated_number:
         new_string += i
+        
     if new_string[0] == "0":
         new_string = "+38" + new_string
+    elif new_string[0] == "8":
+        new_string = "+3" + new_string
     elif new_string[0] != "+":
         new_string = "+" + new_string
 
