@@ -2,9 +2,9 @@ from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 
 users = [
-    {"name": "John Doe", "birthday": "1985.11.1"},
-    {"name": "Charlie Davis", "birthday": "1995.11.2"},
-    {"name": "David Brown", "birthday": "1993.11.1"},
+    {"name": "John Doe", "birthday": "1985.10.15"},
+    {"name": "Charlie Davis", "birthday": "1995.10.13"},
+    {"name": "David Brown", "birthday": "1993.10.14"},
     {"name": "Jane Smith", "birthday": "1990.10.25"},
     {"name": "Eve Wilson", "birthday": "1988.10.30"},
     {"name": "Alice Johnson", "birthday": "1975.9.28"},
@@ -14,8 +14,7 @@ users = [
 ]
 
 def get_upcoming_birthdays(users):
-    #today = datetime.today().date()
-    today = datetime(2025, 10, 30).date()
+    today = datetime.today().date()
     new_list = []
     for user in users:
         parsed_birthday_date = datetime.strptime(user['birthday'], "%Y.%m.%d").date()
